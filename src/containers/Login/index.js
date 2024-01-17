@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
@@ -21,9 +22,8 @@ import {
 } from './styles'
 
 function Login() {
-  const users = useUser()
-
-  console.log(users)
+  const history = useHistory()
+  const { putUserData } = useUser()
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -43,7 +43,7 @@ function Login() {
   })
 
   const onSubmit = async clientData => {
-    const response = await toast.promise(
+    const { data } = await toast.promise(
       api.post(
         'sessions',
         {
@@ -59,7 +59,11 @@ function Login() {
       },
     )
 
-    console.log(response)
+    putUserData(data)
+
+    setTimeout(() => {
+      history.push('/')
+    }, 1000)
   }
 
   return (
@@ -91,7 +95,10 @@ function Login() {
           </Button>
         </form>
         <SignInLink>
-          Não possui conta? <a>Sign Up</a>
+          Não possui conta?{' '}
+          <Link style={{ color: 'white' }} to="/cadastro">
+            Sign Up
+          </Link>
         </SignInLink>
       </ContainerItens>
     </Container>
