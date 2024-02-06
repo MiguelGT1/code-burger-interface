@@ -16,15 +16,18 @@ import { Container, LinkMenu, Menu } from './styles'
 function Orders() {
   const [orders, setOrders] = useState([])
   const [filteredOrders, setFilteredOrders] = useState([])
-  const [activeStatus, setActiveStatus] = useState([])
+  const [activeStatus, setActiveStatus] = useState(null) // Inicializando activeStatus como null
   const [rows, setRows] = useState([])
 
   useEffect(() => {
     async function loadOrders() {
-      const { data } = await api.get('orders')
-
-      setOrders(data)
-      setFilteredOrders(data)
+      try {
+        const { data } = await api.get('orders')
+        setOrders(data)
+        setFilteredOrders(data)
+      } catch (error) {
+        console.error('Error fetching orders:', error)
+      }
     }
 
     loadOrders()
@@ -45,29 +48,45 @@ function Orders() {
     setRows(newRows)
   }, [filteredOrders])
 
-  function handleStatus(status) {
-    if (status.id === 1) {
-      setFilteredOrders(orders)
-    } else {
-      const newOrders = orders.filter(order => order.status === status.value)
-      setFilteredOrders(newOrders)
+  useEffect(() => {
+    if (activeStatus !== null && activeStatus !== undefined) {
+      if (activeStatus === 0) {
+        setFilteredOrders(orders)
+      } else {
+        const statusItem = status[activeStatus]
+        if (statusItem) {
+          const newFilteredOrders = orders.filter(
+            order => order.status === statusItem.value,
+          )
+          setFilteredOrders(newFilteredOrders)
+        } else {
+          console.error('Status not found for activeStatus:', activeStatus)
+        }
+      }
     }
-    setActiveStatus(status.id)
+  }, [orders, activeStatus])
+
+  function handleStatus(selectedStatus) {
+    setActiveStatus(selectedStatus)
   }
 
   return (
     <Container>
       <Menu>
-        {status &&
-          status.map(status => (
+        {status.map(
+          (
+            statusItem,
+            index, // Renomeando a variável para evitar conflito de nomes
+          ) => (
             <LinkMenu
-              key={status.id}
-              onClick={() => handleStatus(status)}
-              isActiveStatus={activeStatus === status.id}
+              key={statusItem.id}
+              onClick={() => handleStatus(index)} // Passando o índice como parâmetro
+              isActiveStatus={activeStatus === index} // Verificando se activeStatus é igual ao índice
             >
-              {status.label}
+              {statusItem.label}
             </LinkMenu>
-          ))}
+          ),
+        )}
       </Menu>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
@@ -77,12 +96,18 @@ function Orders() {
               <TableCell>Pedido</TableCell>
               <TableCell>Cliente</TableCell>
               <TableCell>Data do pedido</TableCell>
-              <TableCell>status</TableCell>
+              <TableCell>Status</TableCell>{' '}
+              {/* Corrigindo a palavra 'status' para 'Status' */}
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map(row => (
-              <Row key={row.orderId} row={row} />
+              <Row
+                key={row.orderId}
+                row={row}
+                setOrders={setOrders}
+                orders={orders}
+              />
             ))}
           </TableBody>
         </Table>
