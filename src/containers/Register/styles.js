@@ -12,14 +12,14 @@ export const Container = styled.div`
 `
 
 export const RegisterImage = styled.img`
-  height: 70%;
+  height: 85%;
 `
 export const Img = styled.img``
 
 export const ContainerItens = styled.div`
   border-radius: 0 10px 10px 0;
   background: #373737;
-  height: 70%;
+  height: 85%;
   padding: 25px 75px;
   display: flex;
   flex-direction: column;
