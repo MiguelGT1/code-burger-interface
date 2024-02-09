@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ContainerButton = styled.button`
   background: #9758a6;
@@ -20,4 +20,4 @@ export const ContainerButton = styled.button`
   &:active {
     opacity: 0.6;
   }
-`;
+`
