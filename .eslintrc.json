@@ -28,16 +28,18 @@
     "prettier/prettier": [
       "error",
       {
-      "endOfLine": "auto"
+        "singleQuote": false, // Alterado para true
+        "semi": true,
+        "arrowParens": "avoid",
+        "trailingComma": "none"
       }
-      ],
+    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "no-unused-vars":"warn",
+    "no-unused-vars": "warn",
     "import-helpers/order-imports": [
       "warn",
       {
-        // example configuration
         "newlinesBetween": "always",
         "groups": [
           "module",
