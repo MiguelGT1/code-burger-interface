@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import Logo from '../../assets/logo.svg'
-import RegisterImg from '../../assets/RegisterImage.png'
+import RegisterImg from '../../assets/cupcakesback.jpg'
+import Logo from '../../assets/logoo.png'
 import { Button, ErrorMessage } from '../../components'
 import api from '../../services/api'
 import {
@@ -16,7 +16,7 @@ import {
   Label,
   Input,
   SignInLink,
-  Img,
+  Logoo,
 } from './styles'
 
 export function Register() {
@@ -68,7 +68,7 @@ export function Register() {
     <Container>
       <RegisterImage src={RegisterImg} alt="Register-Image" />
       <ContainerItens>
-        <Img src={Logo} alt="login-image" />
+        <Logoo src={Logo} alt="login-image" />
         <h1>Cadastre-se</h1>
 
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -105,13 +105,13 @@ export function Register() {
           <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
 
           <Button type="submit" style={{ marginTop: 25, marginBottom: 25 }}>
-            Sign Up
+            Cadastre
           </Button>
         </form>
         <SignInLink>
           Já possui conta?{' '}
           <Link style={{ color: 'white' }} to="/login">
-            Sign In
+            Entrar
           </Link>
         </SignInLink>
       </ContainerItens>

@@ -8,6 +8,12 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
+
+  @media (max-width: 430px) {
+    .logo {
+      display: none;
+    }
+  }
 `
 
 export const ContainerLeft = styled.div`
@@ -18,7 +24,7 @@ export const ContainerLeft = styled.div`
 export const PageLink = styled.a`
   cursor: pointer;
   text-decoration: none;
-  color: ${props => (props.isActive ? '#9758A6' : '#555555;')};
+  color: ${props => (props.isActive ? '#F3AFBC' : '#555555;')};
   font-size: 16px;
   line-height: 19px;
   font-weight: ${props => (props.isActive ? 'bold' : 'normal')};
@@ -47,7 +53,7 @@ export const ContainerText = styled.div`
 `
 
 export const PageLinkExit = styled.a`
-  color: #9758a6;
+  color: #f3afbc;
 
   font-family: Roboto;
   font-size: 14px;

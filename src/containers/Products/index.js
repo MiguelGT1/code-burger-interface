@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 
-import Productsogo from '../../assets/products-logo.png'
-import { CardProduct } from '../../components'
+import Productsogo from '../../assets/backProdutos.jpeg'
+import { CardProduct, Footers } from '../../components'
 import api from '../../services/api'
 import formatCurrency from '../../utils/formatCurrency'
 import {
@@ -29,7 +29,7 @@ export function Product({ location: { state } }) {
     async function loadCategories() {
       const { data } = await api.get('categories')
 
-      const newCategories = [{ id: 0, name: 'Todas' }, ...data]
+      const newCategories = [{ id: 0, name: 'Todos' }, ...data]
 
       setCategories(newCategories)
     }
@@ -84,6 +84,8 @@ export function Product({ location: { state } }) {
             <CardProduct key={product.id} product={product} />
           ))}
       </ProductsContainer>
+
+      <Footers />
     </Container>
   )
 }

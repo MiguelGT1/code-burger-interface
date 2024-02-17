@@ -6,6 +6,9 @@ export const Container = styled.div`
   width: 100vw;
   background: #efefef;
   justify-content: flex-start;
+  @media (max-width: 430px) {
+    flex-direction: column;
+  }
 `
 
 export const ContainerItems = styled.div`

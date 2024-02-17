@@ -21,6 +21,18 @@ export function CartResume() {
     setFinalPrice(sumAllItems)
   }, [cartProducts, deliveryTax])
 
+  const createWhatsAppMessage = () => {
+    const orderSummary = cartProducts
+      .map(product => {
+        return `${product.quantity}x ${product.name}`
+      })
+      .join(', ')
+
+    const totalPrice = formatCurrency(finalPrice + deliveryTax)
+
+    return `Olá😀, seu pedido foi realizado. Em alguns instantes te daremos um retorno🍰.\n\nSeu pedido é: ${orderSummary}\n\nValor total: ${totalPrice}`
+  }
+
   const submitOrder = async () => {
     const order = cartProducts.map(product => {
       return { id: product.id, quantity: product.quantity }
@@ -31,6 +43,11 @@ export function CartResume() {
       success: 'Pedido Realizado com sucesso',
       error: 'Falha ao tentar realizar o seu pedido, tente novamente!',
     })
+
+    const message = createWhatsAppMessage()
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappURL = `https://wa.me/11966389440/?text=${encodedMessage}`
+    window.open(whatsappURL, '_blank')
   }
 
   return (

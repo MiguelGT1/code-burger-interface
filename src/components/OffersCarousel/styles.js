@@ -9,24 +9,30 @@ export const Container = styled.div`
   padding: 35px 0;
 
   .rec.rec-arrow {
-    background-color: #9758a6;
+    background-color: #f3afbc;
     color: #efefef;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border: none;
   }
   .rec.rec-arrow:hover {
-    border: 2px solid #9758a6;
+    border: 2px solid #763643;
     background-color: #efefef;
-    color: #9758a6;
+    color: #f3afbc;
   }
   .rec.rec-arrow:disabled {
     border: none;
     background-color: #bebebf;
     color: #efefef;
   }
+  .hTiYWl {
+    box-shadow: 0 0 1px 3px #763643;
+    background-color: #f3afbc;
+  }
 `
 
-export const CategoryImg = styled.img``
+export const CategoryImg = styled.img`
+  width: 370px;
+`
 
 export const ContainerItems = styled.div`
   display: flex;
@@ -50,7 +56,7 @@ export const Image = styled.img`
 export const Button = styled.button`
   margin-top: 16px;
   border-radius: 8px;
-  background: #9758a6;
+  background: #763643;
 
   height: 50px;
   border: none;

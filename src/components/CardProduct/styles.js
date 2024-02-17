@@ -9,6 +9,14 @@ export const Container = styled.div`
   padding: 16px;
   width: max-content;
 
+  @media (max-width: 375px) {
+    margin-left: -44px;
+  }
+
+  @media (max-width: 430px) {
+    margin-left: -20px;
+  }
+
   div {
     display: flex;
     flex-direction: column;

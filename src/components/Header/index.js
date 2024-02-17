@@ -1,8 +1,9 @@
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
-import Cart from '../../assets/cart.svg'
-import Person from '../../assets/person.svg'
+import Logo from '../../assets/logoo.png'
 import { useUser } from '../../hooks/UserContext'
 import {
   Container,
@@ -28,6 +29,7 @@ export function Header() {
 
   return (
     <Container>
+      <img className="logo" src={Logo} style={{ width: '73px' }} />
       <ContainerLeft>
         <PageLink onClick={() => push('/')} isActive={pathname === '/'}>
           Home
@@ -42,11 +44,11 @@ export function Header() {
 
       <ContainerRight>
         <PageLink onClick={() => push('/carrinho')}>
-          <img src={Cart} alt="Carrinho" />
+          <ShoppingBasketOutlinedIcon style={{ fontSize: '30px' }} />
         </PageLink>
         <Line></Line>
         <PageLink>
-          <img src={Person} alt="Carrinho" />
+          <AccountCircleOutlinedIcon style={{ fontSize: '30px' }} />
         </PageLink>
 
         <ContainerText>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
-import Category from '../../assets/category.png'
+import Category from '../../assets/olha.png'
 import api from '../../services/api'
 import { Container, CategoryImg, ContainerItems, Image, Button } from './styles'
 

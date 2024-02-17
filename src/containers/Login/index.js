@@ -5,8 +5,8 @@ import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import LoginImg from '../../assets/login-image.png'
-import Logo from '../../assets/logo.svg'
+import Logo from '../../assets/logoo.png'
+import LoginImg from '../../assets/mdsone.jpg'
 import { Button, ErrorMessage } from '../../components'
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
@@ -17,7 +17,7 @@ import {
   Label,
   Input,
   SignInLink,
-  Img,
+  Logoo,
 } from './styles'
 
 export function Login() {
@@ -73,7 +73,7 @@ export function Login() {
     <Container>
       <LoginImage src={LoginImg} alt="login-image" />
       <ContainerItens>
-        <Img src={Logo} alt="login-image" />
+        <Logoo src={Logo} alt="login-image" />
         <h1>Login</h1>
 
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -94,13 +94,13 @@ export function Login() {
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
           <Button type="submit" style={{ marginTop: 75, marginBottom: 25 }}>
-            Sign In
+            Entrar
           </Button>
         </form>
         <SignInLink>
           Não possui conta?{' '}
           <Link style={{ color: 'white' }} to="/cadastro">
-            Sign Up
+            Cadastre-se
           </Link>
         </SignInLink>
       </ContainerItens>
