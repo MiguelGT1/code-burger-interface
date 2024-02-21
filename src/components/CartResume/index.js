@@ -46,7 +46,7 @@ export function CartResume() {
 
     const message = createWhatsAppMessage()
     const encodedMessage = encodeURIComponent(message)
-    const whatsappURL = `https://wa.me/11966389440/?text=${encodedMessage}`
+    const whatsappURL = `https://wa.me/5511966389440?text=${encodedMessage}`
     window.open(whatsappURL, '_blank')
   }
 
