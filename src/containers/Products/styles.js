@@ -55,6 +55,9 @@ export const ProductsContainer = styled.div`
   @media (max-width: 430px) {
     grid-template-columns: repeat(1, 1fr);
   }
+  @media (max-width: 395px) {
+    padding: 0px;
+  }
 
   @media (max-width: 375px) {
     margin-left: -25px;

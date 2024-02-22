@@ -20,6 +20,9 @@ export const Logoo = styled.img`
   @media (max-width: 430px) {
     width: 40%;
   }
+  @media (max-width: 395px) {
+    width: 33%;
+  }
 `
 
 export const RegisterImage = styled.img`
